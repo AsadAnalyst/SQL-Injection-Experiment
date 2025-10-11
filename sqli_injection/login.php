@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         // !!! IMPORTANT FOR TASK 3.A !!!
         // Uncomment the line below to enable Error-Based SQLi for Task 3.A
-        // $message = "Login Failed. MySQL Error: " . $conn->error; 
+        $message = "Login Failed. MySQL Error: " . $conn->error; 
     }
 }
 $conn->close();

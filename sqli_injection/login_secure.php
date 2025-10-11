@@ -20,10 +20,18 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $username = $_POST['username'];
     $password = $_POST['password'];
 
-    // SECURE QUERY - Using prepared statements
-    $stmt = $conn->prepare("SELECT username, role, secret_flag FROM users WHERE username = ? AND password_hash = MD5(?)");
+    // SECURE QUERY - Using prepared statements with placeholders
+    // Placeholders (?) prevent SQL injection by separating data from code
+    $stmt = $conn->prepare("SELECT username, role, secret_flag FROM users WHERE username = ? AND password_hash = ?");
+    
+    // bind_param securely binds user input to placeholders
+    // "ss" means both parameters are strings
     $stmt->bind_param("ss", $username, $password);
+    
+    // Execute the prepared statement
     $stmt->execute();
+    
+    // Get the result
     $result = $stmt->get_result();
 
     if ($result && $result->num_rows > 0) {
@@ -33,6 +41,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $message = "Login Failed. Invalid username or password.";
     }
     
+    // Clean up
     $stmt->close();
 }
 $conn->close();
@@ -59,7 +68,7 @@ $conn->close();
     <div class="container">
         <h1>Secure User Login <span class="secure-badge">PROTECTED</span></h1>
         <p>This version uses prepared statements to prevent SQL injection.</p>
-        <p>Test Credentials: <code>alice</code> / <code>password</code></p>
+        <p>Test Credentials: <code>asad/asad</code>, <code>raza/raza</code>, or <code>admin/admin</code></p>
         <form method="POST" action="">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
