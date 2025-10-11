@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     // !!! VULNERABLE LINE !!!
     // User input is directly concatenated into the SQL query string
-    $sql = "SELECT username, role, secret_flag FROM users WHERE username = '$username' AND password_hash = MD5('$password')";
+    $sql = "SELECT username, role, secret_flag FROM users WHERE username = '$username' AND password_hash = '$password'";
     
     $result = $conn->query($sql);
 
@@ -60,7 +60,7 @@ $conn->close();
 <body>
     <div class="container">
         <h1>Vulnerable User Login</h1>
-        <p>Lab Access Credentials: <code>alice</code> / <code>password</code></p>
+        <p>Lab Access Credentials: <code>asad/asad</code>, <code>raza/raza</code>, or <code>admin/admin</code></p>
         <form method="POST" action="">
             <label for="username">Username:</label>
             <input type="text" id="username" name="username" required>
