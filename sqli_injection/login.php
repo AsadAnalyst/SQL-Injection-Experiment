@@ -1,4 +1,4 @@
-<?php
+s<?php
 // PHP Script for a Vulnerable Login Page
 
 // 1. Database Configuration (Adjust if not using XAMPP defaults)
