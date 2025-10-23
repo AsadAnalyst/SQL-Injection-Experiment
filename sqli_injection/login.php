@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Default error message for failed login
         $message = "Login Failed. Check username and password.";
 
-        // !!! IMPORTANT FOR TASK 3.A !!!
+        // !!! IMPORTANT !!!
         // Uncomment the line below to enable Error-Based SQLi for Task 3.A
         $message = "Login Failed. MySQL Error: " . $conn->error; 
     }
