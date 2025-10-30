@@ -1,4 +1,4 @@
-ddd<?php
+cddd<?php
 
 // 1. Database Configuration (Adjust if not using XAMPP defaults)
 $db_host = "localhost";
